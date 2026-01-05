@@ -1,5 +1,5 @@
 # Quran-Revision
-This website will help you determine where you have to improve your memorization of the Quran
+This website will help you determine where you have to improve your memorization of the Quran.
 It will tell you what pages you have reviewed recently and what you have left over for a long time. This can help you strengthen your memorization of the Quran and not leave anything over.
 
 You can select what pages you have reviewed and they will turn green once you mark them as reviewed. If the page you have memorized didn't get reviewed in a week the background color of the page block will turn blue. If it still didn't get reviewed in 3 weeks it will turn yellow. Then orange after week 6. Then red after week 12. Finally grey if left unreviewed for over 20 weeks.
