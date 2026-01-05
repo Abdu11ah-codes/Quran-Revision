@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="icon.png" type="image/x-icon">
+  <title>Muraja3a | Your Hifdh Guard</title>
+  <style>
+    *{
+      box-sizing: border-box;
+    }
+    body{
+      background: linear-gradient(90deg,lightblue, hsl(180, 100%, 75%), hsl(120, 100%, 75%), lightgreen);
+    }
+    .title{
+      width: 100%;
+      text-align: center;
+      margin: 64px 0 24px 0;
+      text-shadow: 0 0 32px yellow;
+    }
+    .title span{
+      cursor: default;
+      font-size: 3em;
+      font-weight: bold;
+      border: solid 3px white;
+      box-shadow: 0 0 16px black;
+      border-radius: 32px;
+      padding: 32px;
+      width: fit-content;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+    }
+    .input-container{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .input-box{
+      font-size: 1.5em;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin: 64px 16px 0 16px;
+      width: 220px;
+      border: solid 1px;
+      border-radius: 24px;
+      padding: 24px;
+    }
+    .from-to-container{
+      display: flex;
+      justify-content: space-between;
+    }
+    .from-to-container input{
+      width: 60px;
+      border-radius: 8px;
+    }
+    .confirm{
+      cursor: pointer;
+      font-size: 0.6em;
+      border-radius: 10px;
+      padding: 6px 0;
+      background-color: lime;
+      border: solid 2px green;
+      font-weight: bold;
+      transition: 0.2s ease-out background-color;
+    }
+    .confirm-2{
+      background-color: hsl(0, 100%, 70%);
+      border-color: red;
+      transition: 0.2s ease-out color;
+    }
+    .confirm:hover{
+      background-color: hsl(120, 100%, 30%);
+      color: white;
+    }
+    .confirm-2:hover{
+      background-color: hsl(0, 100%, 60%);
+      color: white;
+    }
+    .confirm:active{
+      border: inset 2px green;
+      background-color: green;
+    }
+    .confirm-2:active{
+      border: inset 2px red;
+      background-color: red;
+    }
+    .tables-container {
+      margin-top: 48px;
+      display: inline-grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+    .block{
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 16px;
+      border: solid 2px black;
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 0 8px green;
+    }
+    .block-row{
+      display: flex;
+      width: 100%;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .block-block{
+      font-size: 1.15em;
+      width: 40px;
+      text-align: center;
+      border: solid 1px green;
+      border-radius: 8px;
+      padding: 4px;
+      transition: 0.15s ease-out background-color;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    .block-block:hover{
+      cursor: default;
+    }
+    .juz-number{
+      cursor: default;
+      font-size: 1.5em;
+      margin-bottom: 8px;
+      font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+      color: tomato;
+      text-shadow: 0 0 4px black;
+    }
+
+    @media (max-width: 1270px) {
+      .tables-container {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 1020px) {
+      .tables-container {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 770px) {
+      .tables-container {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="title"><span>Muraja3a</span></div>
+  
+  <div class="input-container">
+    <div class="input-box">
+      <div class="from-to-container">
+        <label for="from">From Page</label>
+        <input type="number" name="from" id="from">
+      </div>
+      <div class="from-to-container">
+        <label for="to">To Page</label>
+        <input type="number" name="to" id="to">
+      </div>
+      <button class="confirm" id="confirm">Mark as Reviewed</button>
+    </div>
+      <div class="input-box">
+      <div class="from-to-container">
+        <label for="from-2">From Page</label>
+        <input type="number" name="from-2" id="from-2">
+      </div>
+      <div class="from-to-container">
+        <label for="to-2">To Page</label>
+        <input type="number" name="to-2" id="to-2">
+      </div>
+      <button class="confirm confirm-2" id="confirm-2">Remove from Reviewed</button>
+    </div>
+  </div>
+
+  <div class= tables-container >
+      <div class= block id= block-1>
+        <span class="juz-number">1</span>
+        <div class= block-row >
+          <div class="block-block" id="page-2">2</div>
+          <div class="block-block" id="page-3">3</div>
+          <div class="block-block" id="page-4">4</div>
+          <div class="block-block" id="page-5">5</div>
+        </div>
+        <div class= block-row >
+          <div class="block-block" id="page-6">6</div>
+          <div class="block-block" id="page-7">7</div>
+          <div class="block-block" id="page-8">8</div>
+          <div class="block-block" id="page-9">9</div>
+        </div>
+        <div class= block-row >
+          <div class="block-block" id="page-10">10</div>
+          <div class="block-block" id="page-11">11</div>
+          <div class="block-block" id="page-12">12</div>
+          <div class="block-block" id="page-13">13</div>
+        </div>
+        <div class= block-row >
+          <div class="block-block" id="page-14">14</div>
+          <div class="block-block" id="page-15">15</div>
+          <div class="block-block" id="page-16">16</div>
+          <div class="block-block" id="page-17">17</div>
+        </div>
+        <div class= block-row >
+          <div class="block-block" id="page-18">18</div>
+          <div class="block-block" id="page-19">19</div>
+          <div class="block-block" id="page-20">20</div>
+          <div class="block-block" id="page-21">21</div>
+        </div>
+      </div>
+      <div class= block  id= block-2 >
+        <span class="juz-number">2</span>
+        <div class= block-row >
+          <div class= block-block  id= page-22 >22</div>
+          <div class= block-block  id= page-23 >23</div>
+          <div class= block-block  id= page-24 >24</div>
+          <div class= block-block  id= page-25 >25</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-26 >26</div>
+          <div class= block-block  id= page-27 >27</div>
+          <div class= block-block  id= page-28 >28</div>
+          <div class= block-block  id= page-29 >29</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-30 >30</div>
+          <div class= block-block  id= page-31 >31</div>
+          <div class= block-block  id= page-32 >32</div>
+          <div class= block-block  id= page-33 >33</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-34 >34</div>
+          <div class= block-block  id= page-35 >35</div>
+          <div class= block-block  id= page-36 >36</div>
+          <div class= block-block  id= page-37 >37</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-38 >38</div>
+          <div class= block-block  id= page-39 >39</div>
+          <div class= block-block  id= page-40 >40</div>
+          <div class= block-block  id= page-41 >41</div>
+        </div>
+      </div>
+      <div class= block  id= block-3 >
+        <span class="juz-number">3</span>
+        <div class= block-row >
+          <div class= block-block  id= page-42 >42</div>
+          <div class= block-block  id= page-43 >43</div>
+          <div class= block-block  id= page-44 >44</div>
+          <div class= block-block  id= page-45 >45</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-46 >46</div>
+          <div class= block-block  id= page-47 >47</div>
+          <div class= block-block  id= page-48 >48</div>
+          <div class= block-block  id= page-49 >49</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-50 >50</div>
+          <div class= block-block  id= page-51 >51</div>
+          <div class= block-block  id= page-52 >52</div>
+          <div class= block-block  id= page-53 >53</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-54 >54</div>
+          <div class= block-block  id= page-55 >55</div>
+          <div class= block-block  id= page-56 >56</div>
+          <div class= block-block  id= page-57 >57</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-58 >58</div>
+          <div class= block-block  id= page-59 >59</div>
+          <div class= block-block  id= page-60 >60</div>
+          <div class= block-block  id= page-61 >61</div>
+        </div>
+      </div>
+      <div class= block  id= block-4 >
+        <span class="juz-number">4</span>
+        <div class= block-row >
+          <div class= block-block  id= page-62 >62</div>
+          <div class= block-block  id= page-63 >63</div>
+          <div class= block-block  id= page-64 >64</div>
+          <div class= block-block  id= page-65 >65</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-66 >66</div>
+          <div class= block-block  id= page-67 >67</div>
+          <div class= block-block  id= page-68 >68</div>
+          <div class= block-block  id= page-69 >69</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-70 >70</div>
+          <div class= block-block  id= page-71 >71</div>
+          <div class= block-block  id= page-72 >72</div>
+          <div class= block-block  id= page-73 >73</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-74 >74</div>
+          <div class= block-block  id= page-75 >75</div>
+          <div class= block-block  id= page-76 >76</div>
+          <div class= block-block  id= page-77 >77</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-78 >78</div>
+          <div class= block-block  id= page-79 >79</div>
+          <div class= block-block  id= page-80 >80</div>
+          <div class= block-block  id= page-81 >81</div>
+        </div>
+      </div>
+      <div class= block  id= block-5 >
+        <span class="juz-number">5</span>
+        <div class= block-row >
+          <div class= block-block  id= page-82 >82</div>
+          <div class= block-block  id= page-83 >83</div>
+          <div class= block-block  id= page-84 >84</div>
+          <div class= block-block  id= page-85 >85</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-86 >86</div>
+          <div class= block-block  id= page-87 >87</div>
+          <div class= block-block  id= page-88 >88</div>
+          <div class= block-block  id= page-89 >89</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-90 >90</div>
+          <div class= block-block  id= page-91 >91</div>
+          <div class= block-block  id= page-92 >92</div>
+          <div class= block-block  id= page-93 >93</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-94 >94</div>
+          <div class= block-block  id= page-95 >95</div>
+          <div class= block-block  id= page-96 >96</div>
+          <div class= block-block  id= page-97 >97</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-98 >98</div>
+          <div class= block-block  id= page-99 >99</div>
+          <div class= block-block  id= page-100 >100</div>
+          <div class= block-block  id= page-101 >101</div>
+        </div>
+      </div>
+      <div class= block  id= block-6 >
+        <span class="juz-number">6</span>
+        <div class= block-row >
+          <div class= block-block  id= page-102 >102</div>
+          <div class= block-block  id= page-103 >103</div>
+          <div class= block-block  id= page-104 >104</div>
+          <div class= block-block  id= page-105 >105</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-106 >106</div>
+          <div class= block-block  id= page-107 >107</div>
+          <div class= block-block  id= page-108 >108</div>
+          <div class= block-block  id= page-109 >109</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-110 >110</div>
+          <div class= block-block  id= page-111 >111</div>
+          <div class= block-block  id= page-112 >112</div>
+          <div class= block-block  id= page-113 >113</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-114 >114</div>
+          <div class= block-block  id= page-115 >115</div>
+          <div class= block-block  id= page-116 >116</div>
+          <div class= block-block  id= page-117 >117</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-118 >118</div>
+          <div class= block-block  id= page-119 >119</div>
+          <div class= block-block  id= page-120 >120</div>
+          <div class= block-block  id= page-121 >121</div>
+        </div>
+      </div>
+      <div class= block  id= block-7 >
+        <span class="juz-number">7</span>
+        <div class= block-row >
+          <div class= block-block  id= page-122 >122</div>
+          <div class= block-block  id= page-123 >123</div>
+          <div class= block-block  id= page-124 >124</div>
+          <div class= block-block  id= page-125 >125</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-126 >126</div>
+          <div class= block-block  id= page-127 >127</div>
+          <div class= block-block  id= page-128 >128</div>
+          <div class= block-block  id= page-129 >129</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-130 >130</div>
+          <div class= block-block  id= page-131 >131</div>
+          <div class= block-block  id= page-132 >132</div>
+          <div class= block-block  id= page-133 >133</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-134 >134</div>
+          <div class= block-block  id= page-135 >135</div>
+          <div class= block-block  id= page-136 >136</div>
+          <div class= block-block  id= page-137 >137</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-138 >138</div>
+          <div class= block-block  id= page-139 >139</div>
+          <div class= block-block  id= page-140 >140</div>
+          <div class= block-block  id= page-141 >141</div>
+        </div>
+      </div>
+      <div class= block  id= block-8 >
+        <span class="juz-number">8</span>
+        <div class= block-row >
+          <div class= block-block  id= page-142 >142</div>
+          <div class= block-block  id= page-143 >143</div>
+          <div class= block-block  id= page-144 >144</div>
+          <div class= block-block  id= page-145 >145</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-146 >146</div>
+          <div class= block-block  id= page-147 >147</div>
+          <div class= block-block  id= page-148 >148</div>
+          <div class= block-block  id= page-149 >149</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-150 >150</div>
+          <div class= block-block  id= page-151 >151</div>
+          <div class= block-block  id= page-152 >152</div>
+          <div class= block-block  id= page-153 >153</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-154 >154</div>
+          <div class= block-block  id= page-155 >155</div>
+          <div class= block-block  id= page-156 >156</div>
+          <div class= block-block  id= page-157 >157</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-158 >158</div>
+          <div class= block-block  id= page-159 >159</div>
+          <div class= block-block  id= page-160 >160</div>
+          <div class= block-block  id= page-161 >161</div>
+        </div>
+      </div>
+      <div class= block  id= block-9 >
+        <span class="juz-number">9</span>
+        <div class= block-row >
+          <div class= block-block  id= page-162 >162</div>
+          <div class= block-block  id= page-163 >163</div>
+          <div class= block-block  id= page-164 >164</div>
+          <div class= block-block  id= page-165 >165</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-166 >166</div>
+          <div class= block-block  id= page-167 >167</div>
+          <div class= block-block  id= page-168 >168</div>
+          <div class= block-block  id= page-169 >169</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-170 >170</div>
+          <div class= block-block  id= page-171 >171</div>
+          <div class= block-block  id= page-172 >172</div>
+          <div class= block-block  id= page-173 >173</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-174 >174</div>
+          <div class= block-block  id= page-175 >175</div>
+          <div class= block-block  id= page-176 >176</div>
+          <div class= block-block  id= page-177 >177</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-178 >178</div>
+          <div class= block-block  id= page-179 >179</div>
+          <div class= block-block  id= page-180 >180</div>
+          <div class= block-block  id= page-181 >181</div>
+        </div>
+      </div>
+      <div class= block  id= block-10 >
+        <span class="juz-number">10</span>
+        <div class= block-row >
+          <div class= block-block  id= page-182 >182</div>
+          <div class= block-block  id= page-183 >183</div>
+          <div class= block-block  id= page-184 >184</div>
+          <div class= block-block  id= page-185 >185</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-186 >186</div>
+          <div class= block-block  id= page-187 >187</div>
+          <div class= block-block  id= page-188 >188</div>
+          <div class= block-block  id= page-189 >189</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-190 >190</div>
+          <div class= block-block  id= page-191 >191</div>
+          <div class= block-block  id= page-192 >192</div>
+          <div class= block-block  id= page-193 >193</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-194 >194</div>
+          <div class= block-block  id= page-195 >195</div>
+          <div class= block-block  id= page-196 >196</div>
+          <div class= block-block  id= page-197 >197</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-198 >198</div>
+          <div class= block-block  id= page-199 >199</div>
+          <div class= block-block  id= page-200 >200</div>
+          <div class= block-block  id= page-201 >201</div>
+        </div>
+      </div>
+      <div class= block  id= block-11 >
+        <span class="juz-number">11</span>
+        <div class= block-row >
+          <div class= block-block  id= page-202 >202</div>
+          <div class= block-block  id= page-203 >203</div>
+          <div class= block-block  id= page-204 >204</div>
+          <div class= block-block  id= page-205 >205</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-206 >206</div>
+          <div class= block-block  id= page-207 >207</div>
+          <div class= block-block  id= page-208 >208</div>
+          <div class= block-block  id= page-209 >209</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-210 >210</div>
+          <div class= block-block  id= page-211 >211</div>
+          <div class= block-block  id= page-212 >212</div>
+          <div class= block-block  id= page-213 >213</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-214 >214</div>
+          <div class= block-block  id= page-215 >215</div>
+          <div class= block-block  id= page-216 >216</div>
+          <div class= block-block  id= page-217 >217</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-218 >218</div>
+          <div class= block-block  id= page-219 >219</div>
+          <div class= block-block  id= page-220 >220</div>
+          <div class= block-block  id= page-221 >221</div>
+        </div>
+      </div>
+      <div class= block  id= block-12 >
+        <span class="juz-number">12</span>
+        <div class= block-row >
+          <div class= block-block  id= page-222 >222</div>
+          <div class= block-block  id= page-223 >223</div>
+          <div class= block-block  id= page-224 >224</div>
+          <div class= block-block  id= page-225 >225</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-226 >226</div>
+          <div class= block-block  id= page-227 >227</div>
+          <div class= block-block  id= page-228 >228</div>
+          <div class= block-block  id= page-229 >229</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-230 >230</div>
+          <div class= block-block  id= page-231 >231</div>
+          <div class= block-block  id= page-232 >232</div>
+          <div class= block-block  id= page-233 >233</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-234 >234</div>
+          <div class= block-block  id= page-235 >235</div>
+          <div class= block-block  id= page-236 >236</div>
+          <div class= block-block  id= page-237 >237</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-238 >238</div>
+          <div class= block-block  id= page-239 >239</div>
+          <div class= block-block  id= page-240 >240</div>
+          <div class= block-block  id= page-241 >241</div>
+        </div>
+      </div>
+      <div class= block  id= block-13 >
+        <span class="juz-number">13</span>
+        <div class= block-row >
+          <div class= block-block  id= page-242 >242</div>
+          <div class= block-block  id= page-243 >243</div>
+          <div class= block-block  id= page-244 >244</div>
+          <div class= block-block  id= page-245 >245</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-246 >246</div>
+          <div class= block-block  id= page-247 >247</div>
+          <div class= block-block  id= page-248 >248</div>
+          <div class= block-block  id= page-249 >249</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-250 >250</div>
+          <div class= block-block  id= page-251 >251</div>
+          <div class= block-block  id= page-252 >252</div>
+          <div class= block-block  id= page-253 >253</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-254 >254</div>
+          <div class= block-block  id= page-255 >255</div>
+          <div class= block-block  id= page-256 >256</div>
+          <div class= block-block  id= page-257 >257</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-258 >258</div>
+          <div class= block-block  id= page-259 >259</div>
+          <div class= block-block  id= page-260 >260</div>
+          <div class= block-block  id= page-261 >261</div>
+        </div>
+      </div>
+      <div class= block  id= block-14 >
+        <span class="juz-number">14</span>
+        <div class= block-row >
+          <div class= block-block  id= page-262 >262</div>
+          <div class= block-block  id= page-263 >263</div>
+          <div class= block-block  id= page-264 >264</div>
+          <div class= block-block  id= page-265 >265</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-266 >266</div>
+          <div class= block-block  id= page-267 >267</div>
+          <div class= block-block  id= page-268 >268</div>
+          <div class= block-block  id= page-269 >269</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-270 >270</div>
+          <div class= block-block  id= page-271 >271</div>
+          <div class= block-block  id= page-272 >272</div>
+          <div class= block-block  id= page-273 >273</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-274 >274</div>
+          <div class= block-block  id= page-275 >275</div>
+          <div class= block-block  id= page-276 >276</div>
+          <div class= block-block  id= page-277 >277</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-278 >278</div>
+          <div class= block-block  id= page-279 >279</div>
+          <div class= block-block  id= page-280 >280</div>
+          <div class= block-block  id= page-281 >281</div>
+        </div>
+      </div>
+      <div class= block  id= block-15 >
+        <span class="juz-number">15</span>
+        <div class= block-row >
+          <div class= block-block  id= page-282 >282</div>
+          <div class= block-block  id= page-283 >283</div>
+          <div class= block-block  id= page-284 >284</div>
+          <div class= block-block  id= page-285 >285</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-286 >286</div>
+          <div class= block-block  id= page-287 >287</div>
+          <div class= block-block  id= page-288 >288</div>
+          <div class= block-block  id= page-289 >289</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-290 >290</div>
+          <div class= block-block  id= page-291 >291</div>
+          <div class= block-block  id= page-292 >292</div>
+          <div class= block-block  id= page-293 >293</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-294 >294</div>
+          <div class= block-block  id= page-295 >295</div>
+          <div class= block-block  id= page-296 >296</div>
+          <div class= block-block  id= page-297 >297</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-298 >298</div>
+          <div class= block-block  id= page-299 >299</div>
+          <div class= block-block  id= page-300 >300</div>
+          <div class= block-block  id= page-301 >301</div>
+        </div>
+      </div>
+      <div class= block  id= block-16 >
+        <span class="juz-number">16</span>
+        <div class= block-row >
+          <div class= block-block  id= page-302 >302</div>
+          <div class= block-block  id= page-303 >303</div>
+          <div class= block-block  id= page-304 >304</div>
+          <div class= block-block  id= page-305 >305</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-306 >306</div>
+          <div class= block-block  id= page-307 >307</div>
+          <div class= block-block  id= page-308 >308</div>
+          <div class= block-block  id= page-309 >309</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-310 >310</div>
+          <div class= block-block  id= page-311 >311</div>
+          <div class= block-block  id= page-312 >312</div>
+          <div class= block-block  id= page-313 >313</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-314 >314</div>
+          <div class= block-block  id= page-315 >315</div>
+          <div class= block-block  id= page-316 >316</div>
+          <div class= block-block  id= page-317 >317</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-318 >318</div>
+          <div class= block-block  id= page-319 >319</div>
+          <div class= block-block  id= page-320 >320</div>
+          <div class= block-block  id= page-321 >321</div>
+        </div>
+      </div>
+      <div class= block  id= block-17 >
+        <span class="juz-number">17</span>
+        <div class= block-row >
+          <div class= block-block  id= page-322 >322</div>
+          <div class= block-block  id= page-323 >323</div>
+          <div class= block-block  id= page-324 >324</div>
+          <div class= block-block  id= page-325 >325</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-326 >326</div>
+          <div class= block-block  id= page-327 >327</div>
+          <div class= block-block  id= page-328 >328</div>
+          <div class= block-block  id= page-329 >329</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-330 >330</div>
+          <div class= block-block  id= page-331 >331</div>
+          <div class= block-block  id= page-332 >332</div>
+          <div class= block-block  id= page-333 >333</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-334 >334</div>
+          <div class= block-block  id= page-335 >335</div>
+          <div class= block-block  id= page-336 >336</div>
+          <div class= block-block  id= page-337 >337</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-338 >338</div>
+          <div class= block-block  id= page-339 >339</div>
+          <div class= block-block  id= page-340 >340</div>
+          <div class= block-block  id= page-341 >341</div>
+        </div>
+      </div>
+      <div class= block  id= block-18 >
+        <span class="juz-number">18</span>
+        <div class= block-row >
+          <div class= block-block  id= page-342 >342</div>
+          <div class= block-block  id= page-343 >343</div>
+          <div class= block-block  id= page-344 >344</div>
+          <div class= block-block  id= page-345 >345</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-346 >346</div>
+          <div class= block-block  id= page-347 >347</div>
+          <div class= block-block  id= page-348 >348</div>
+          <div class= block-block  id= page-349 >349</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-350 >350</div>
+          <div class= block-block  id= page-351 >351</div>
+          <div class= block-block  id= page-352 >352</div>
+          <div class= block-block  id= page-353 >353</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-354 >354</div>
+          <div class= block-block  id= page-355 >355</div>
+          <div class= block-block  id= page-356 >356</div>
+          <div class= block-block  id= page-357 >357</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-358 >358</div>
+          <div class= block-block  id= page-359 >359</div>
+          <div class= block-block  id= page-360 >360</div>
+          <div class= block-block  id= page-361 >361</div>
+        </div>
+      </div>
+      <div class= block  id= block-19 >
+        <span class="juz-number">19</span>
+        <div class= block-row >
+          <div class= block-block  id= page-362 >362</div>
+          <div class= block-block  id= page-363 >363</div>
+          <div class= block-block  id= page-364 >364</div>
+          <div class= block-block  id= page-365 >365</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-366 >366</div>
+          <div class= block-block  id= page-367 >367</div>
+          <div class= block-block  id= page-368 >368</div>
+          <div class= block-block  id= page-369 >369</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-370 >370</div>
+          <div class= block-block  id= page-371 >371</div>
+          <div class= block-block  id= page-372 >372</div>
+          <div class= block-block  id= page-373 >373</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-374 >374</div>
+          <div class= block-block  id= page-375 >375</div>
+          <div class= block-block  id= page-376 >376</div>
+          <div class= block-block  id= page-377 >377</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-378 >378</div>
+          <div class= block-block  id= page-379 >379</div>
+          <div class= block-block  id= page-380 >380</div>
+          <div class= block-block  id= page-381 >381</div>
+        </div>
+      </div>
+      <div class= block  id= block-20 >
+        <span class="juz-number">20</span>
+        <div class= block-row >
+          <div class= block-block  id= page-382 >382</div>
+          <div class= block-block  id= page-383 >383</div>
+          <div class= block-block  id= page-384 >384</div>
+          <div class= block-block  id= page-385 >385</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-386 >386</div>
+          <div class= block-block  id= page-387 >387</div>
+          <div class= block-block  id= page-388 >388</div>
+          <div class= block-block  id= page-389 >389</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-390 >390</div>
+          <div class= block-block  id= page-391 >391</div>
+          <div class= block-block  id= page-392 >392</div>
+          <div class= block-block  id= page-393 >393</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-394 >394</div>
+          <div class= block-block  id= page-395 >395</div>
+          <div class= block-block  id= page-396 >396</div>
+          <div class= block-block  id= page-397 >397</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-398 >398</div>
+          <div class= block-block  id= page-399 >399</div>
+          <div class= block-block  id= page-400 >400</div>
+          <div class= block-block  id= page-401 >401</div>
+        </div>
+      </div>
+      <div class= block  id= block-21 >
+        <span class="juz-number">21</span>
+        <div class= block-row >
+          <div class= block-block  id= page-402 >402</div>
+          <div class= block-block  id= page-403 >403</div>
+          <div class= block-block  id= page-404 >404</div>
+          <div class= block-block  id= page-405 >405</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-406 >406</div>
+          <div class= block-block  id= page-407 >407</div>
+          <div class= block-block  id= page-408 >408</div>
+          <div class= block-block  id= page-409 >409</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-410 >410</div>
+          <div class= block-block  id= page-411 >411</div>
+          <div class= block-block  id= page-412 >412</div>
+          <div class= block-block  id= page-413 >413</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-414 >414</div>
+          <div class= block-block  id= page-415 >415</div>
+          <div class= block-block  id= page-416 >416</div>
+          <div class= block-block  id= page-417 >417</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-418 >418</div>
+          <div class= block-block  id= page-419 >419</div>
+          <div class= block-block  id= page-420 >420</div>
+          <div class= block-block  id= page-421 >421</div>
+        </div>
+      </div>
+      <div class= block  id= block-22 >
+        <span class="juz-number">22</span>
+        <div class= block-row >
+          <div class= block-block  id= page-422 >422</div>
+          <div class= block-block  id= page-423 >423</div>
+          <div class= block-block  id= page-424 >424</div>
+          <div class= block-block  id= page-425 >425</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-426 >426</div>
+          <div class= block-block  id= page-427 >427</div>
+          <div class= block-block  id= page-428 >428</div>
+          <div class= block-block  id= page-429 >429</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-430 >430</div>
+          <div class= block-block  id= page-431 >431</div>
+          <div class= block-block  id= page-432 >432</div>
+          <div class= block-block  id= page-433 >433</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-434 >434</div>
+          <div class= block-block  id= page-435 >435</div>
+          <div class= block-block  id= page-436 >436</div>
+          <div class= block-block  id= page-437 >437</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-438 >438</div>
+          <div class= block-block  id= page-439 >439</div>
+          <div class= block-block  id= page-440 >440</div>
+          <div class= block-block  id= page-441 >441</div>
+        </div>
+      </div>
+      <div class= block  id= block-23 >
+        <span class="juz-number">23</span>
+        <div class= block-row >
+          <div class= block-block  id= page-442 >442</div>
+          <div class= block-block  id= page-443 >443</div>
+          <div class= block-block  id= page-444 >444</div>
+          <div class= block-block  id= page-445 >445</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-446 >446</div>
+          <div class= block-block  id= page-447 >447</div>
+          <div class= block-block  id= page-448 >448</div>
+          <div class= block-block  id= page-449 >449</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-450 >450</div>
+          <div class= block-block  id= page-451 >451</div>
+          <div class= block-block  id= page-452 >452</div>
+          <div class= block-block  id= page-453 >453</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-454 >454</div>
+          <div class= block-block  id= page-455 >455</div>
+          <div class= block-block  id= page-456 >456</div>
+          <div class= block-block  id= page-457 >457</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-458 >458</div>
+          <div class= block-block  id= page-459 >459</div>
+          <div class= block-block  id= page-460 >460</div>
+          <div class= block-block  id= page-461 >461</div>
+        </div>
+      </div>
+      <div class= block  id= block-24 >
+        <span class="juz-number">24</span>
+        <div class= block-row >
+          <div class= block-block  id= page-462 >462</div>
+          <div class= block-block  id= page-463 >463</div>
+          <div class= block-block  id= page-464 >464</div>
+          <div class= block-block  id= page-465 >465</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-466 >466</div>
+          <div class= block-block  id= page-467 >467</div>
+          <div class= block-block  id= page-468 >468</div>
+          <div class= block-block  id= page-469 >469</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-470 >470</div>
+          <div class= block-block  id= page-471 >471</div>
+          <div class= block-block  id= page-472 >472</div>
+          <div class= block-block  id= page-473 >473</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-474 >474</div>
+          <div class= block-block  id= page-475 >475</div>
+          <div class= block-block  id= page-476 >476</div>
+          <div class= block-block  id= page-477 >477</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-478 >478</div>
+          <div class= block-block  id= page-479 >479</div>
+          <div class= block-block  id= page-480 >480</div>
+          <div class= block-block  id= page-481 >481</div>
+        </div>
+      </div>
+      <div class= block  id= block-25 >
+        <span class="juz-number">25</span>
+        <div class= block-row >
+          <div class= block-block  id= page-482 >482</div>
+          <div class= block-block  id= page-483 >483</div>
+          <div class= block-block  id= page-484 >484</div>
+          <div class= block-block  id= page-485 >485</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-486 >486</div>
+          <div class= block-block  id= page-487 >487</div>
+          <div class= block-block  id= page-488 >488</div>
+          <div class= block-block  id= page-489 >489</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-490 >490</div>
+          <div class= block-block  id= page-491 >491</div>
+          <div class= block-block  id= page-492 >492</div>
+          <div class= block-block  id= page-493 >493</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-494 >494</div>
+          <div class= block-block  id= page-495 >495</div>
+          <div class= block-block  id= page-496 >496</div>
+          <div class= block-block  id= page-497 >497</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-498 >498</div>
+          <div class= block-block  id= page-499 >499</div>
+          <div class= block-block  id= page-500 >500</div>
+          <div class= block-block  id= page-501 >501</div>
+        </div>
+      </div>
+      <div class= block  id= block-26 >
+        <span class="juz-number">26</span>
+        <div class= block-row >
+          <div class= block-block  id= page-502 >502</div>
+          <div class= block-block  id= page-503 >503</div>
+          <div class= block-block  id= page-504 >504</div>
+          <div class= block-block  id= page-505 >505</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-506 >506</div>
+          <div class= block-block  id= page-507 >507</div>
+          <div class= block-block  id= page-508 >508</div>
+          <div class= block-block  id= page-509 >509</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-510 >510</div>
+          <div class= block-block  id= page-511 >511</div>
+          <div class= block-block  id= page-512 >512</div>
+          <div class= block-block  id= page-513 >513</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-514 >514</div>
+          <div class= block-block  id= page-515 >515</div>
+          <div class= block-block  id= page-516 >516</div>
+          <div class= block-block  id= page-517 >517</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-518 >518</div>
+          <div class= block-block  id= page-519 >519</div>
+          <div class= block-block  id= page-520 >520</div>
+          <div class= block-block  id= page-521 >521</div>
+        </div>
+      </div>
+      <div class= block  id= block-27 >
+        <span class="juz-number">27</span>
+        <div class= block-row >
+          <div class= block-block  id= page-522 >522</div>
+          <div class= block-block  id= page-523 >523</div>
+          <div class= block-block  id= page-524 >524</div>
+          <div class= block-block  id= page-525 >525</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-526 >526</div>
+          <div class= block-block  id= page-527 >527</div>
+          <div class= block-block  id= page-528 >528</div>
+          <div class= block-block  id= page-529 >529</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-530 >530</div>
+          <div class= block-block  id= page-531 >531</div>
+          <div class= block-block  id= page-532 >532</div>
+          <div class= block-block  id= page-533 >533</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-534 >534</div>
+          <div class= block-block  id= page-535 >535</div>
+          <div class= block-block  id= page-536 >536</div>
+          <div class= block-block  id= page-537 >537</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-538 >538</div>
+          <div class= block-block  id= page-539 >539</div>
+          <div class= block-block  id= page-540 >540</div>
+          <div class= block-block  id= page-541 >541</div>
+        </div>
+      </div>
+      <div class= block  id= block-28 >
+        <span class="juz-number">28</span>
+        <div class= block-row >
+          <div class= block-block  id= page-542 >542</div>
+          <div class= block-block  id= page-543 >543</div>
+          <div class= block-block  id= page-544 >544</div>
+          <div class= block-block  id= page-545 >545</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-546 >546</div>
+          <div class= block-block  id= page-547 >547</div>
+          <div class= block-block  id= page-548 >548</div>
+          <div class= block-block  id= page-549 >549</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-550 >550</div>
+          <div class= block-block  id= page-551 >551</div>
+          <div class= block-block  id= page-552 >552</div>
+          <div class= block-block  id= page-553 >553</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-554 >554</div>
+          <div class= block-block  id= page-555 >555</div>
+          <div class= block-block  id= page-556 >556</div>
+          <div class= block-block  id= page-557 >557</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-558 >558</div>
+          <div class= block-block  id= page-559 >559</div>
+          <div class= block-block  id= page-560 >560</div>
+          <div class= block-block  id= page-561 >561</div>
+        </div>
+      </div>
+      <div class= block  id= block-29 >
+        <span class="juz-number">29</span>
+        <div class= block-row >
+          <div class= block-block  id= page-562 >562</div>
+          <div class= block-block  id= page-563 >563</div>
+          <div class= block-block  id= page-564 >564</div>
+          <div class= block-block  id= page-565 >565</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-566 >566</div>
+          <div class= block-block  id= page-567 >567</div>
+          <div class= block-block  id= page-568 >568</div>
+          <div class= block-block  id= page-569 >569</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-570 >570</div>
+          <div class= block-block  id= page-571 >571</div>
+          <div class= block-block  id= page-572 >572</div>
+          <div class= block-block  id= page-573 >573</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-574 >574</div>
+          <div class= block-block  id= page-575 >575</div>
+          <div class= block-block  id= page-576 >576</div>
+          <div class= block-block  id= page-577 >577</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-578 >578</div>
+          <div class= block-block  id= page-579 >579</div>
+          <div class= block-block  id= page-580 >580</div>
+          <div class= block-block  id= page-581 >581</div>
+        </div>
+      </div>
+      <div class= block  id= block-30 >
+        <span class="juz-number">30</span>
+        <div class= block-row >
+          <div class= block-block  id= page-582 >582</div>
+          <div class= block-block  id= page-583 >583</div>
+          <div class= block-block  id= page-584 >584</div>
+          <div class= block-block  id= page-585 >585</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-586 >586</div>
+          <div class= block-block  id= page-587 >587</div>
+          <div class= block-block  id= page-588 >588</div>
+          <div class= block-block  id= page-589 >589</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-590 >590</div>
+          <div class= block-block  id= page-591 >591</div>
+          <div class= block-block  id= page-592 >592</div>
+          <div class= block-block  id= page-593 >593</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-594 >594</div>
+          <div class= block-block  id= page-595 >595</div>
+          <div class= block-block  id= page-596 >596</div>
+          <div class= block-block  id= page-597 >597</div>
+        </div>
+        <div class= block-row >
+          <div class= block-block  id= page-598 >598</div>
+          <div class= block-block  id= page-599 >599</div>
+          <div class= block-block  id= page-600 >600</div>
+          <div class= block-block  id= page-601 >601</div>
+        </div>
+      </div>
+  </div>
+  <script>
+    let reviewedListIDs = JSON.parse(localStorage.getItem('reviewed-list-ids')) || [];
+
+    function renderScreen(){
+      const today = Date.now();
+      const oneWeek = 604800000;
+      
+      reviewedListIDs.forEach(id => {
+        const pageElem = document.getElementById(`page-${id.number}`);
+        if (!pageElem) return;
+        
+        const timeSinceReview = today - id.time;
+        let bgColor;
+        
+        if (timeSinceReview < oneWeek){
+          bgColor = 'lime';
+        }else if (timeSinceReview < 3 * oneWeek){
+          bgColor = 'cyan';
+        }else if (timeSinceReview < 6 * oneWeek){
+          bgColor = 'yellow';
+        }else if (timeSinceReview < 12 * oneWeek){
+          bgColor = 'orange';
+        }else if (timeSinceReview < 20 * oneWeek){
+          bgColor = 'red';
+        }else{
+          bgColor = 'lightslategray';
+        }
+        
+        pageElem.style.backgroundColor = bgColor;
+      });
+    }
+
+    function confirm(){   // Mark as Reviewed
+      let fromPage = parseInt(document.getElementById('from').value) || 1;
+      let toPage = parseInt(document.getElementById('to').value) || 1;
+      if (toPage - fromPage < 0 || fromPage > 601 || toPage > 601 || fromPage < 2 || toPage < 2){
+        alert('Error, {To Page} can\'t be less than {From Page}; min. page number: 2; max. page number: 601; Select the page number twice if you want to select a single page.');
+      }else{
+        const today = Date.now();
+        
+        // Create a Map for fast lookup
+        const reviewedMap = new Map(reviewedListIDs.map(item => [item.number, item]));
+        
+        for (let i = fromPage; i <= toPage; i++){
+          const pageElem = document.getElementById(`page-${i}`);
+          if (pageElem) {
+            pageElem.style.backgroundColor = 'lime';
+            reviewedMap.set(i, {number: i, time: today}); // Overwrites if exists
+          }
+        }
+        
+        // Convert back to array
+        reviewedListIDs = Array.from(reviewedMap.values());
+        localStorage.setItem('reviewed-list-ids', JSON.stringify(reviewedListIDs));
+      }
+    }
+
+    function confirm2(){    // Remove From Reviewed
+      let fromPage = parseInt(document.getElementById('from-2').value) || 1;
+      let toPage = parseInt(document.getElementById('to-2').value) || 1;
+      if (toPage - fromPage < 0 || fromPage > 601 || toPage > 601 || fromPage < 2 || toPage < 2){
+        alert('Error, {To Page} can\'t be less than {From Page}; min. page number: 2; max. page number: 601; Select the page number twice if you want to select a single page.');
+      }else{
+        for (let i = fromPage; i <= toPage; i++){
+          const pageElem = document.getElementById(`page-${i}`);
+          if (pageElem) {
+            pageElem.style.backgroundColor = '';
+          }
+          reviewedListIDs = reviewedListIDs.filter(item => item.number !== i);
+        }
+        localStorage.setItem('reviewed-list-ids', JSON.stringify(reviewedListIDs));
+      }
+    }
+
+    if (reviewedListIDs.length > 0){
+      renderScreen()
+    }
+
+    const confirmBtn = document.getElementById('confirm');
+    confirmBtn.addEventListener('click', confirm)
+
+    const confirmBtn2 = document.getElementById('confirm-2');
+    confirmBtn2.addEventListener('click', confirm2);
+</script>
+</body>
+</html>
